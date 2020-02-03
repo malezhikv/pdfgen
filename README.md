@@ -138,7 +138,7 @@ $x = ConvertFrom-Json $json -Depth 3
 . .\generate-pdf.ps1
 Generate-MyCloudPDF -ClientInfo $x[0] -Template templates\invoice.html -DocumentDate (Get-Date) -OutputFilename invoice.pdf
 ```
-2) Массовая генерация для массива заказов клиентов
+2) Массовая генерация для массива заказов клиентов и отправка по эл.почте
 ```PowerShell
 $json = get-your-clients-from-db-and-return-json-array
 $x = ConvertFrom-Json $json -Depth 3
