@@ -97,9 +97,9 @@ function Generate-MyCloudPDF {
       Replace('$SellerSignedBy$',$ClientInfo.SellerSignedName).
       Replace('$SellerSignedPost$',$ClientInfo.SellerSignedPost).
       Replace('$DocumentDate$',$DocumentDate).
-			Replace('$Balance$', $ClientInfo.Balance.ToString().Replace(".00","").Replace(",00","")).
-			Replace('$TotalInWords$',(Convert-NumberToText $ToPay.ToString().Replace(".00","").Replace(",00",""))).
-			Replace('$ToPay$',"{0}" -f $ToPay.ToString().Replace(".00","").Replace(",00",""))
+      Replace('$Balance$', $ClientInfo.Balance.ToString().Replace(".00","").Replace(",00","")).
+      Replace('$TotalInWords$',(Convert-NumberToText $ToPay.ToString().Replace(".00","").Replace(",00",""))).
+      Replace('$ToPay$',"{0}" -f $ToPay.ToString().Replace(".00","").Replace(",00",""))
 
     if(Test-Path $OutputFileName) { Remove-Item $OutputFileName }
     if(Test-Path $OutputFileNameHTML) { Remove-Item $OutputFileNameHTML }
