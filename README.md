@@ -5,61 +5,57 @@
 Функция Generate-PDF читает указанный при вызове шаблон и заменяет в нем параметры на значения из структуры данных и сохраняет в промежуточном HTML, который потом с помощью утилиты wkhtmltopdf конвертирует в PDF файл
 ```JSON
 var json = [{
-        // данные клиента
-        Id : "",
-        EDRPOU : "",
-        Name : "",
-        LegalAddress : "",
-        PostAddress : "",
-        Phone : "",
-        BankRequisites : "р/р 26005052634833 в АТ КБ ПРИВАТБАНК МФО 300711",
-        ContractNumber : "",
-        ContractDate : "",
-        SignedName : "ФИО",                       // подписант клиента
-        SignedPost : "Директор",                  // должность подписанта клиента
-        Represented  :  "директора Иванова П.С.", // в лице  для акта
+        "Id" : "",
+        "EDRPOU" : "",
+        "Name" : "",
+        "LegalAddress" : "",
+        "PostAddress" : "",
+        "Phone" : "",
+        "BankRequisites" : "р/р 26005052634833 в АТ КБ ПРИВАТБАНК МФО 300711",
+        "ContractNumber" : "",
+        "ContractDate" : "",
+        "SignedName" : "ФИО",                       
+        "SignedPost" : "Директор",                  
+        "Represented"  :  "директора Иванова П.С.", 
 
-        InvoiceNumber : "",
+        "InvoiceNumber" : "",
         
-        // массив строк заказа, для счета на предоплату на текущий месяц
-        Order : [{
-          Name : "Оренда серверу.." ,    // название позиции в заказе 
-          Amount : 0,                    // кол-во
-          Price : 100,                   // цена за ед
-          TotalPrice : 100              // общая сумма (с учетом скидок и тп)
+        "Order" : [{
+          "Name" : "Оренда серверу.." ,    
+          "Amount" : 0,                    
+          "Price" : 100,                   
+          "TotalPrice" : 100              
         },
         {
           ...
         }],
         
-        ActNumber = "",
+        "ActNumber" : "",
 
-        // массив строк для Акта - за что начислено абонплату за предідущий период
-        Accrual : [{
-          Name : " Оренда серверу.."     // название позиции в заказе,
-          Amount : 0                     // кол-во
-          Price : 100                    // цена за ед
-          Rental : 100                   // общая сумма (с учетом скидок и тп)
-          BilledFrom : "01.01.2020"
-          BilledTo : "31.01.2020"
+        "Accrual" : [{
+          "Name" : " Оренда серверу..",     
+          "Amount" : 0,                     
+          "Price" : 100,                    
+          "Rental" : 100,                   
+          "BilledFrom" : "01.01.2020",
+          "BilledTo" : "31.01.2020"
         },
         {
             ...
         }],
         
-        // данные продавца
-        SellerName : "Продавець",
-        SellerVOsobi : "директора Продавця Ф.О.",
-        SellerEDRPOU : "" ,
-        SellerBank : "",
-        SellerBankAcc : "",
-        SellerBankDep : "",
-        SellerBankMFO : "",
-        SellerLegalAddress : "",
-        SellerPostAddress : "",
-        SellerPhone : "",
-        SellerSignedBy : "Продавець Ф.О.",
-        SellerSignedPost : "директор"
+        "SellerName" : "Продавець",
+        "SellerVOsobi" : "директора Продавця Ф.О.",
+        "SellerEDRPOU" : "" ,
+        "SellerBank" : "",
+        "SellerBankAcc" : "",
+        "SellerBankDep" : "",
+        "SellerBankMFO" : "",
+        "SellerLegalAddress" : "",
+        "SellerPostAddress" : "",
+        "SellerPhone" : "",
+        "SellerSignedBy" : "Продавець Ф.О.",
+        "SellerSignedPost" : "директор"
     },
     {
        ...
