@@ -17,7 +17,8 @@ var json = [{
         "SignedName" : "ФИО",                       
         "SignedPost" : "Директор",                  
         "Represented"  :  "директора Иванова П.С.", 
-
+        "Balance" : 0,
+        "Emails" : "one@email,two@email,three@email",
         "InvoiceNumber" : "",
         
         "Order" : [{
@@ -55,16 +56,19 @@ var json = [{
         "SellerPostAddress" : "",
         "SellerPhone" : "",
         "SellerSignedBy" : "Продавець Ф.О.",
-        "SellerSignedPost" : "директор"
+        "SellerSignedPost" : "директор",
+        "Tags" : [{
+                "Name" : "метка"
+        },
+        {
+         ...
+        }]
     },
     {
        ...
     }]
 ```
 ```PowerShell
-$json = get-your-clients-from-db-and-return-json-array
-$x = ConvertFrom-Json $json -Depth 3
-
 # OR create PSObject directly
 
 $x = New-Object PSObject -Property @{
@@ -83,40 +87,61 @@ $x = New-Object PSObject -Property @{
         Represented  = $Represented  # в лице "директора Иванова П.С." - для акта
 
         InvoiceNumber = $InvoiceNumber
+        ActNumber = $ActNumber
+        Balance = $Balance
+        Emails = "one@email,two@email,three@email"
         
         # массив строк заказа, для счета на предоплату на текущий месяц
-        Order = new-object PSObject -Property @{
+        Order = @(new-object PSObject -Property @{
           Name = $OrderItemName     # название позиции в заказе, Оренда серверу..
           Amount = $Amount          # кол-во
           Price = $Price            # цена за ед
           TotalPrice = $TotalPrice  # общая сумма (с учетом скидок и тп)
-        } 
+        },...) 
         
-        ActNumber = $ActNumber
 
         # массив строк для Акта - за что начислено абонплату за предідущий период
-        Accrual = new-object PSObject -Property @{
+        Accrual = @(new-object PSObject -Property @{
           Name = $OrderItemName     # название позиции в заказе, Оренда серверу..
           Amount = $Amount          # кол-во
           Price = $Price            # цена за ед
           TotalPrice = $TotalPrice  # общая сумма (с учетом скидок и тп)
-        }
+        },...)
         # данные продавца
-        $SellerName = $SellerName
-        $SellerVOsobi = $SellerRepresented
-        $SellerEDRPOU = $SellerEDRPOU 
-        $SellerBank = $SellerBankRequisites
-        $SellerBankAcc = $SellerBankAcc
-        $SellerBankDep = $SellerBankDep
-        $SellerBankMFO = $SellerBankMFO
-        $SellerLegalAddress = $SellerLegalAddress
-        $SellerPostAddress = $SellerPostAddress
-        $SellerPhone = $SellerPhone
-        $SellerSignedBy = $SellerSignedName
-        $SellerSignedPost = $SellerSignedPost
+        SellerName = $SellerName
+        SellerVOsobi = $SellerRepresented
+        SellerEDRPOU = $SellerEDRPOU 
+        SellerBank = $SellerBankRequisites
+        SellerBankAcc = $SellerBankAcc
+        SellerBankDep = $SellerBankDep
+        SellerBankMFO = $SellerBankMFO
+        SellerLegalAddress = $SellerLegalAddress
+        SellerPostAddress = $SellerPostAddress
+        SellerPhone = $SellerPhone
+        SellerSignedBy = $SellerSignedName
+        SellerSignedPost = $SellerSignedPost
+        Tags = @(new-object -PSObject -Property @{
+               Name = "метка" 
+        },...)
     }
 ```
 ## Setup
 - установить wkhtmltopdf ( загрузка аткуальной версии отсюда https://wkhtmltopdf.org/ )
 - скопировать в папку, например c:\gendoc\templates, файлы шаблона act.html invoice.html и файл скрипта generate-pdf.ps1
 - изменить файл generate-pdf.ps1 - установить рабочий каталог куда складываются файлы PDF и обновить параметры подключения к SMTP серверу
+
+## Usage
+1) Генерация одного документа
+```PowerShell
+$json = get-your-clients-from-db-and-return-json-array
+$x = ConvertFrom-Json $json -Depth 3
+. .\generate-pdf.ps1
+Generate-MyCloudPDF -ClientInfo $x[0] -Template templates\invoice.html -DocumentDate (Get-Date) -OutputFilename invoice.pdf
+```
+2) Массовая генерация для массива заказов клиентов
+```PowerShell
+$json = get-your-clients-from-db-and-return-json-array
+$x = ConvertFrom-Json $json -Depth 3
+. .\generate-pdf.ps1
+Generate-MonthlyDocs  # сгенерить и отправить на почту
+```
