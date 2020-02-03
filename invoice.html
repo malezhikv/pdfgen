@@ -1,0 +1,132 @@
+﻿<html>
+<head>
+<meta charset="UTF-8">
+<style>
+table .tb-bordered {
+    border-collapse: collapse;
+}
+table .tb-bordered, th .tb-bordered, td .tb-bordered {
+    border: 1px solid black;
+}
+table, th, td {
+	vertical-align: top;
+	padding: 5px;
+}
+body, pre,table {
+	font-family: Arial;
+	/*font-size: small;*/
+}
+</style>
+</head>
+<body>
+<div id="div1" style="font-size: small; text-align:center; padding-left:33px; padding-right:33px; margin-left:50px;margin-right:50px;border: 1px solid black;">Увага! Оплата цього рахунку означає погодження з умовами поставки товарів. Повідомлення про оплату є обов'язковим, в іншому випадку не гарантується наявність товарів на складі. Товар відпускається за фактом надходження коштів на р/р Постачальника, самовивозом, за наявності довіреності та паспорта.</div>
+<div id="div2" style="width:100%; border: 1px solid black;margin-top:10px; padding-bottom:10px; overflow: auto;">
+	<div id="div3" style="text-align:center;padding-bottom:15px;"><strong>Зразок заповнення платіжного доручення</strong></div>
+	<div style="width:80%;float:left;;overflow: auto; font-family: Times, serif;">
+		<div style="width:10%;float:left;">Одержувач</div><div style="width:85%;float:right;text-align:left;border-right: 2px solid black;"><strong>$SellerName$</strong></div>
+	</div>
+	<div style="width:20%;float:right;"></div>
+	<div id="div4" style="width:80%;float:left;;overflow: auto; font-family: Times, serif;">
+		<div id="div6" style="width:70%;float:left;">
+			<div style="width:20%;float:left;padding-top:12px;">Код</div>      <div style="width:80%;float:right;overflow: auto;"><div style="width:160px;border: 2px solid black;text-align:center;padding-bottom:10px;padding-top:10px;"><strong>$SellerEDRPOU$</strong></div></div>
+			<div style="width:80%;float:left;">
+				<div>Банк одержувача</div>
+				<div style="height:37px;font-weight:bold;vertical-align: bottom;border-bottom:1px solid black;">$SellerBankDep$</div>
+			</div>      
+			<div style="width:20%;float:right;">
+				<div style="text-align:center;">Код банку</div>
+				<div style="border: 2px solid black;text-align:center;padding-bottom:10px;padding-top:10px;"><strong>$SellerBankMFO$</strong></div>
+			</div>
+		</div>
+		<div id="div7" style="width:28%;float:right;">
+			<div style="border-right: 2px solid black;text-align:center;">КРЕДИТ рах. N</div>
+			<div style="border: 2px solid black;text-align:center;padding-bottom:10px;padding-top:10px;"><strong>$SellerBankAcc$</strong></div>
+			<div style="border-bottom: 2px solid black;border-right: 2px solid black;border-left: 2px solid black;text-align:center;padding-bottom:10px;padding-top:10px;"><strong>&nbsp;</strong></div>
+		</div>
+	</div>
+	<div id="div5" style="width:20%;float:right;">&nbsp;</div>
+</div>
+
+<h3 style="margin-bottom:0;margin-top:50px;"><strong>Рахунок на оплату № $InvoiceNumber$ від $DocumentDate$</strong></h3>
+<hr style="width:100%; color:black; border: 2px solid black;"/> 
+
+<table style="width: 100%;padding:0px;margin:0px;border:0px;border-collapse:collapse;">
+<tbody>
+<tr>
+<td>
+<u>Постачальник</u>
+</td>
+<td>
+<strong>$SellerName$</strong><br/>
+$SellerBank$<br/>
+$SellerLegalAddress$, Тел/Факс: $SellerPhone$<br/>
+код за ЄДРПОУ $SellerEDRPOU$<br/>
+Платник єдиного податку за ставкою 5%
+</td>
+</tr>
+<tr>
+<td>
+<u>Покупець</u>
+</td>
+<td>
+<strong>$ClientName$</strong>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Договір: Договір надання послуг № $DogovirNumber$ від $DogovirDate$р.</p>
+<table style="width: 100%;border-collapse: collapse;" class="tb-bordered;">
+<tbody>
+<tr>
+<td class="tb-bordered" style="text-align: center; background-color: silver;">
+<strong>№</strong>
+</td>
+<td class="tb-bordered" style="text-align: center;background-color: silver;">
+<strong>Товари (роботи, послуги)</strong>
+</td>
+<td class="tb-bordered" style="text-align: center;background-color: silver;" colspan="2">
+<strong>Кількість</strong>
+</td>
+<td class="tb-bordered" style="text-align: center;background-color: silver;">
+<strong>Ціна</strong>
+</td>
+<td class="tb-bordered" style="text-align: center;background-color: silver;">
+<strong>Сума</strong>
+</td>
+</tr>
+$InvoiceBody$
+<tr>
+<td style="text-align: right;" colspan="5">
+<strong>Разом</strong>
+</td>
+<td style="text-align: right; white-space: nowrap;">
+<strong>$Total$,00</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;" colspan="5" >
+<strong>Залишок на $DocumentDate$</strong>
+<td style="text-align: right; white-space: nowrap;">
+<strong>$Balance$,00</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align: right;" colspan="5" >
+<strong>ДО СПЛАТИ</strong>
+</td>
+<td style="text-align: right; white-space: nowrap;">
+<strong>$ToPay$,00</strong>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>$TotalInWords$ 00 копійок</strong></p>
+<hr style="width:100%; color:black; border: 2px solid black;"/> 
+
+<div align="right" style="width:100%;"><p style="text-align: left;width:35%;border-bottom: 2px solid black;"><strong>Виписав(ла):</strong></p></div>
+
+
+</body>
+</html>

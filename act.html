@@ -1,0 +1,99 @@
+﻿<html>
+<head>
+<meta charset="UTF-8">
+<style>
+table .tb-bordered {
+    border-collapse: collapse;
+}
+table .tb-bordered, th .tb-bordered, td .tb-bordered {
+    border: 1px solid black;
+}
+table, th, td {
+	vertical-align: top;
+	padding: 5px;
+}
+body, pre,table {
+	font-family: Arial;
+	/*font-size: small;*/
+}
+</style>
+</head>
+<body>
+<div style="font-size: small; text-align:center; padding-left:10px; padding-right:10px; padding-bottom:5px; padding-top:5px; margin-left:40px;margin-right:40px;margin-bottom:20px;border: 1px solid black;">Увага! Даний Акт тільки для ознайомлення. Оригінал підписаний ЕЦП (електронним цифровим підписом) буде наданий окремо.</div>
+<table style="width: 100%;border-collapse: collapse;border:0px;">
+<tr><td style="width: 45%">ЗАТВЕРДЖУЮ<br/></td><td rowspan="5" style="width:10%">&nbsp;</td><td>ЗАТВЕРДЖУЮ<br/></td></tr>
+<tr><td>$SellerSignedPost$</td><td>$ClientSignedPost$</td></tr>
+<tr><td>$SellerName$</td><td>$ClientName$</td></tr>
+<tr><td><br/>____________________________</td><td><br/>____________________________</td></tr>
+<tr><td>$SellerSignedBy$</td><td>$ClientSignedBy$</td></tr>
+</table>
+<h3 style="margin-bottom:0;margin-top:50px;"><strong>Акт надання послуг № $ActNumber$ від $DocumentDate$</strong></h3>
+<hr style="width:100%; color:black; border: 2px solid black;"/> 
+<p>&nbsp;&nbsp;Ми, що нижче підписалися, представники Замовника $ClientName$ $ClientSignedPost$ $ClientSignedBy$, з одного боку, і представник Виконавця $SellerName$ $SellerSignedPost$ $SellerSignedBy$, з іншого боку, склали цей акт про те, що на підставі наведених документів:
+</p>
+<p style="padding-left:50px;">Договір: № $DogovirNumber$ від $DogovirDate$</p>
+<p>Виконавцем були виконані наступні роботи (надані такі послуги):
+</p>
+
+<table style="width: 100%;border-collapse: collapse;" class="tb-bordered;">
+<tbody>
+<tr>
+<td class="tb-bordered" style="text-align: center; background-color: silver;">
+<strong>№</strong>
+</td>
+<td class="tb-bordered" style="text-align: center;background-color: silver;">
+<strong>Товари (роботи, послуги)</strong>
+</td>
+<td class="tb-bordered" style="text-align: center;background-color: silver;" colspan="2">
+<strong>Кількість</strong>
+</td>
+<td class="tb-bordered" style="text-align: center;background-color: silver;">
+<strong>Ціна</strong>
+</td>
+<td class="tb-bordered" style="text-align: center;background-color: silver;">
+<strong>Сума</strong>
+</td>
+</tr>
+$ActBody$
+<tr>
+<td style="text-align: right;" colspan="5">
+<strong>Разом</strong>
+</td>
+<td style="text-align: right; white-space: nowrap;">
+<strong>$ActTotal$,00</strong>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Загальна вартість робіт (послуг) склала $ActTotalInWords$ 00 копійок<br/>
+Замовник претензій по об'єму, якості та строкам виконання робіт (надання послуг) не має.</p>
+<p>Місце складання:	 м.Київ</p>
+<hr style="width:100%; color:black; border: 2px solid black;"/> 
+
+<table style="width: 100%;padding:5px;margin:0px;border:0px;border-collapse:collapse;">
+<tbody>
+<tr><td style="width: 45%"><strong>Від Виконавця*</strong></td><td rowspan="6" style="width:10%">&nbsp;</td><td><strong>Від Замовника</strong></td></tr>
+<tr><td><br/>____________________________</td><td><br/>____________________________</td></tr>
+<tr><td>$SellerSignedPost$ $SellerSignedBy$</td><td>$ClientSignedPost$ $ClientSignedBy$</td></tr>
+<tr><td style="font-size: small;">* Відповідальний за здійснення господарської операції і правильність її оформлення</td><td>&nbsp;</td></tr>
+<tr><td><strong>$DocumentDate$</strong></td><td><strong>$DocumentDate$</strong></td></tr>
+<tr>
+<td>
+$SellerName$<br/>
+код за ЄДРПОУ $SellerEDRPOU$<br/>
+$SellerBank$<br/>
+$SellerLegalAddress$<br/>$SellerPhone$<br/>
+Платник єдиного податку за ставкою 5%
+</td>
+<td>
+$ClientName$<br/>
+код за ЄДРПОУ $EDRPOU$<br/>
+<!--$ClientBank$<br/>-->
+$LegalAddress$<br/>$Phone$
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
